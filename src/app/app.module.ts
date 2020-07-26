@@ -12,6 +12,7 @@ import { ContactComponent } from './contact/contact.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BannerComponent } from './components/banner/banner.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { BannerComponent } from './components/banner/banner.component';
     HeaderComponent,
     FooterComponent,
     BannerComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
