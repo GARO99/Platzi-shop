@@ -1,5 +1,6 @@
 <img [src]="product.image" alt="">
 <p><b>{{product.title | uppercase }}</b></p>
 <p>{{product.price | currency}}</p>
-<p>{{product.description | slice:0:20}}</p>
+<p>{{product.description | slice:0:10}}</p>
+<a [routerLink]="['/products', product.id]">Ver producto</a>
 <button (click)="addShoppingCart()" >Agregar al carrito</button>

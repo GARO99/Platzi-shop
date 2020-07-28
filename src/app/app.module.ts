@@ -13,6 +13,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
+import { LayoutComponent } from './components/layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     FooterComponent,
     BannerComponent,
     NotFoundComponent,
+    ProductDetailComponent,
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,
