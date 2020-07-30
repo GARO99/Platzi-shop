@@ -6,12 +6,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './components/cart/cart.component';
-import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { BannerComponent } from './components/banner/banner.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { LayoutComponent } from './components/layout/layout.component';
@@ -21,12 +19,10 @@ import { LayoutComponent } from './components/layout/layout.component';
     AppComponent,
     ProductComponent,
     CartComponent,
-    HomeComponent,
     ProductsComponent,
     ContactComponent,
     HeaderComponent,
     FooterComponent,
-    BannerComponent,
     NotFoundComponent,
     ProductDetailComponent,
     LayoutComponent,
