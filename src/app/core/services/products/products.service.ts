@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../interfaces/product.model';
+import { Product } from '../../../products/interfaces/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProductsService {
 
   products: Product[] = [
