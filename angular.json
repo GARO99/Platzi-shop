@@ -33,6 +33,7 @@
               "./node_modules/@fortawesome/fontawesome-free/css/all.css"
             ],
             "scripts": [
+              "./node_modules/swiper/swiper-bundle.min.js",
               "./node_modules/@fortawesome/fontawesome-free/js/all.js"
             ]
           },
@@ -101,6 +102,7 @@
               "./node_modules/@fortawesome/fontawesome-free/css/all.css"
             ],
             "scripts": [
+              "./node_modules/swiper/swiper-bundle.min.js",
               "./node_modules/@fortawesome/fontawesome-free/js/all.js"
             ]
           }
