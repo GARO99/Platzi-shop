@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import { ContactComponent } from './contact/contact.component';
 import { LayoutComponent } from './components/layout/layout.component';
 
 const routes: Routes = [
@@ -27,7 +26,7 @@ const routes: Routes = [
       },
       {
         path: 'contact',
-        component: ContactComponent
+        loadChildren: () => import('./contact/contact.module').then(m => m.ContactModel)
       }
     ]
   },
