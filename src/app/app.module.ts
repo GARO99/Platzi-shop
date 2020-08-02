@@ -9,7 +9,6 @@ import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ContactComponent } from './contact/contact.component';
-import { NotFoundComponent } from './not-found/not-found.component';
 import { LayoutComponent } from './components/layout/layout.component';
 
 
@@ -18,7 +17,6 @@ import { LayoutComponent } from './components/layout/layout.component';
     AppComponent,
     CartComponent,
     ContactComponent,
-    NotFoundComponent,
     LayoutComponent,
   ],
   imports: [
