@@ -1,6 +1,8 @@
-<img [src]="product.image" alt="">
-<p><b>{{product.title | uppercase }}</b></p>
-<p>{{product.price | currency}}</p>
-<p>{{product.description | slice:0:10}}</p>
-<a [routerLink]="['/products', product.id]">Ver producto</a>
-<button (click)="addShoppingCart()" >Agregar al carrito</button>
+<div class="row">
+  <img [src]="product.image" alt="">
+  <p><b>{{product.title | uppercase }}</b></p>
+  <p>{{product.price | currency}}</p>
+  <p>{{product.description | slice:0:10}}</p>
+  <a mat-raised-button [routerLink]="['/products', product.id]">Ver producto</a>
+  <button mat-raised-button color="primary" (click)="addShoppingCart()" >Agregar al carrito</button>
+</div>

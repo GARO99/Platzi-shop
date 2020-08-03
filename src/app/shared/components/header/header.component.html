@@ -1,5 +1,25 @@
-<nav>
-  <a routerLink="/home" routerLinkActive="active"> Inicio </a>
-  <a routerLink="/products" routerLinkActive="active"> Productos </a>
-  <a routerLink="/contact" routerLinkActive="active"> Contactanos </a>
-</nav>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <div class="row header-row between-xs middle-xs">
+      <nav>
+        <span>Platzi Shop</span>
+        <a mat-button routerLink="/home" routerLinkActive="active"> 
+          <mat-icon>home</mat-icon>
+          Inicio 
+        </a>
+        <a mat-button routerLink="/products" routerLinkActive="active"> 
+          <mat-icon>shopping_basket</mat-icon>
+          Productos 
+        </a>
+        <a mat-button routerLink="/contact" routerLinkActive="active">
+          <mat-icon>contact_page</mat-icon>
+          Contactanos 
+        </a>
+      </nav>
+      
+      <a mat-icon-button title="Carrito">
+        <mat-icon matBadge="2" matBadgeSize="small" matBadgeColor="warn" >shopping_cart</mat-icon>
+      </a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

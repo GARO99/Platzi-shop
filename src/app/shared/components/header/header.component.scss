@@ -4,5 +4,9 @@ nav > a {
 }
 
 .active{
-  color: #2c379c;
+  text-decoration: underline !important;
+}
+
+.header-row {
+  width: 100%;
 }
