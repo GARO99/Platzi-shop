@@ -1,1 +1,21 @@
-<p>footer works!</p>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <footer>
+      <div class="row footer-txt between-xs middle-xs center-xs">
+        <div class="col-xs-6">
+          <span>Plazti Shop <mat-icon [inline]="true">copyright</mat-icon> {{CurrentYear.getFullYear() }}</span>
+        </div>
+
+        <div class="col-xs-6">
+          <span>              
+            <a mat-button href="https://github.com/GARO99" target="_blank"> 
+              <mat-icon [inline]="true">code</mat-icon>
+                Design by Gustavo Romero
+              <mat-icon [inline]="true">code</mat-icon>
+            </a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </mat-toolbar-row>
+</mat-toolbar>
