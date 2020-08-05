@@ -7,6 +7,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatListModule } from '@angular/material/list';
+
 
 @NgModule({
   declarations: [],
@@ -16,7 +23,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatIconModule,
     MatBadgeModule,
     MatCardModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatSelectModule,
+    MatInputModule,
+    MatRadioModule,
+    ReactiveFormsModule,
+    LayoutModule,
+    MatListModule
   ],
   imports: [
     CommonModule,
@@ -25,7 +38,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatIconModule,
     MatBadgeModule,
     MatCardModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatSelectModule,
+    MatRadioModule,
+    ReactiveFormsModule,
+    LayoutModule,
+    MatListModule
   ]
 })
 export class MaterialModule { }

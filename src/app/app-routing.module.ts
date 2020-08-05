@@ -23,19 +23,19 @@ const routes: Routes = [
         loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
       },
       {
-        path: 'products/:id',
-        loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
-      },
-      {
         path: 'contact',
         loadChildren: () => import('./contact/contact.module').then(m => m.ContactModel)
       }
     ]
   },
   {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./not-found/not-found.module').then(m => m.NotFoundModule)
-  }
+  },
 ];
 
 @NgModule({
