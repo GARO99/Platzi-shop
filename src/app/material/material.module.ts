@@ -13,7 +13,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatListModule } from '@angular/material/list';
-
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [],
@@ -29,7 +30,9 @@ import { MatListModule } from '@angular/material/list';
     MatRadioModule,
     ReactiveFormsModule,
     LayoutModule,
-    MatListModule
+    MatListModule,
+    MatGridListModule,
+    MatMenuModule
   ],
   imports: [
     CommonModule,
@@ -43,7 +46,9 @@ import { MatListModule } from '@angular/material/list';
     MatRadioModule,
     ReactiveFormsModule,
     LayoutModule,
-    MatListModule
+    MatListModule,
+    MatGridListModule,
+    MatMenuModule
   ]
 })
 export class MaterialModule { }
