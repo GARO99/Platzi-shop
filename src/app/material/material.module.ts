@@ -15,6 +15,11 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+
+import { CustomPaginator } from './custom-files/CustomPaginatorConfiguration';
 
 @NgModule({
   declarations: [],
@@ -32,7 +37,10 @@ import { MatMenuModule } from '@angular/material/menu';
     LayoutModule,
     MatListModule,
     MatGridListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   imports: [
     CommonModule,
@@ -48,7 +56,15 @@ import { MatMenuModule } from '@angular/material/menu';
     LayoutModule,
     MatListModule,
     MatGridListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
+  ],
+  providers: [
+    {
+      provide: MatPaginatorIntl, useClass: CustomPaginator
+    }
   ]
 })
 export class MaterialModule { }

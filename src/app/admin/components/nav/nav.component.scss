@@ -15,3 +15,11 @@
   top: 0;
   z-index: 1;
 }
+
+.sidenav-active {
+  background: rgba(0,0,0,.04);
+}
+
+.mat-drawer-container {
+  background-color: transparent !important;
+}

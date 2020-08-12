@@ -5,15 +5,15 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { NavComponent } from './components/nav/nav.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { StockComponent } from './components/stock/stock.component';
 import { MaterialModule } from '../material/material.module';
 
-
 @NgModule({
-  declarations: [ProductFormComponent, NavComponent, DashboardComponent],
+  declarations: [ProductFormComponent, NavComponent, DashboardComponent, StockComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    MaterialModule
+    MaterialModule,
   ],
 })
 export class AdminModule { }

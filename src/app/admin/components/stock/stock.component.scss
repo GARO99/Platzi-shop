@@ -1,0 +1,21 @@
+.margin-table {
+  margin: 2%;
+}
+
+.full-width-table {
+  width: 100%;
+}
+
+:host ::ng-deep .mat-sort-header-container {
+  display: flex;
+  justify-content: center;
+}
+
+.aling-field-table {
+  th {
+    text-align: center;
+  }
+  tr {
+    text-align: center;
+  }
+}
