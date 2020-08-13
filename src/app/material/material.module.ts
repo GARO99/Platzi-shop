@@ -10,7 +10,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
-import { ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -33,7 +32,6 @@ import { CustomPaginator } from './custom-files/CustomPaginatorConfiguration';
     MatSelectModule,
     MatInputModule,
     MatRadioModule,
-    ReactiveFormsModule,
     LayoutModule,
     MatListModule,
     MatGridListModule,
@@ -52,7 +50,6 @@ import { CustomPaginator } from './custom-files/CustomPaginatorConfiguration';
     MatSidenavModule,
     MatSelectModule,
     MatRadioModule,
-    ReactiveFormsModule,
     LayoutModule,
     MatListModule,
     MatGridListModule,

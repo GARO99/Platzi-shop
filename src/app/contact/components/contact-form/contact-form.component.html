@@ -1,5 +1,5 @@
-<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()" autocomplete="off">
-  <mat-card class="shipping-card">
+<form [formGroup]="contactForm" novalidate (ngSubmit)="onSubmit()" autocomplete="off">
+  <mat-card class="contact-card">
     <mat-card-header>
       <mat-card-title>Envianos un correo electrónico</mat-card-title>
     </mat-card-header>
@@ -8,7 +8,7 @@
         <div class="col">
           <mat-form-field class="full-width">
             <input matInput placeholder="Nombres" formControlName="firstName">
-            <mat-error *ngIf="addressForm.controls['firstName'].hasError('required')">
+            <mat-error *ngIf="contactForm.controls['firstName'].hasError('required')">
               Por favor ,Ingrese sus nombres
             </mat-error>
           </mat-form-field>
@@ -16,7 +16,7 @@
         <div class="col">
           <mat-form-field class="full-width">
             <input matInput placeholder="Apelldidos" formControlName="lastName">
-            <mat-error *ngIf="addressForm.controls['lastName'].hasError('required')">
+            <mat-error *ngIf="contactForm.controls['lastName'].hasError('required')">
               Por favor ,Ingrese sus apellidos
             </mat-error>
           </mat-form-field>
@@ -26,10 +26,10 @@
         <div class="col">
           <mat-form-field class="full-width">
             <input matInput placeholder="Numero de Telefono/Celular" formControlName="phoneNumber">
-            <mat-error *ngIf="addressForm.controls['phoneNumber'].hasError('required')">
+            <mat-error *ngIf="contactForm.controls['phoneNumber'].hasError('required')">
               Por favor ,Ingrese su número de telefono o celuar
             </mat-error>
-            <mat-error *ngIf="addressForm.controls['phoneNumber'].hasError('pattern')">
+            <mat-error *ngIf="contactForm.controls['phoneNumber'].hasError('pattern')">
               Numero de telefono o celular invalido
             </mat-error>
           </mat-form-field>
@@ -37,10 +37,10 @@
         <div class="col">
           <mat-form-field class="full-width">
             <input matInput placeholder="E-mail" formControlName="email">
-            <mat-error *ngIf="addressForm.controls['email'].hasError('required')">
+            <mat-error *ngIf="contactForm.controls['email'].hasError('required')">
               Por favor ,Ingrese su correo electrónico
             </mat-error>
-            <mat-error *ngIf="addressForm.controls['email'].hasError('email')">
+            <mat-error *ngIf="contactForm.controls['email'].hasError('email')">
               Direccion de correo electrónico ivanlida
             </mat-error>
           </mat-form-field>
@@ -50,7 +50,7 @@
         <div class="col">
           <mat-form-field class="full-width">
             <textarea matInput placeholder="Mensaje" formControlName="message" rows="5"></textarea>
-            <mat-error *ngIf="addressForm.controls['message'].hasError('required')">
+            <mat-error *ngIf="contactForm.controls['message'].hasError('required')">
               Por favor ,Ingrese su mensaje
             </mat-error>
           </mat-form-field>
