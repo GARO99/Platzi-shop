@@ -22,8 +22,11 @@
     "@angular/platform-browser-dynamic": "~10.0.4",
     "@angular/router": "~10.0.4",
     "@fortawesome/fontawesome-free": "^5.14.0",
+    "@sweetalert2/ngx-sweetalert2": "^8.1.1",
     "flexboxgrid": "^6.3.1",
+    "ngx-currency": "^2.5.1",
     "rxjs": "~6.5.5",
+    "sweetalert2": "^9.17.1",
     "swiper": "^6.0.4",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
