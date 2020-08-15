@@ -1,4 +1,5 @@
-<form class="margin-form" [formGroup]="productForm" autocomplete="off" novalidate #formDirective="ngForm" (ngSubmit)="onSubmit($event)">
+<form class="margin-form" [formGroup]="productForm" autocomplete="off" novalidate 
+#formDirective="ngForm" (ngSubmit)="onSubmit($event)" keyup.enter>
   <mat-card class="products-card">
     <mat-card-header>
       <mat-card-title>Crear nuevo producto</mat-card-title>
@@ -20,7 +21,8 @@
         <div class="col">
           <mat-form-field class="full-width">
             <input matInput placeholder="Titulo del producto" formControlName="title">
-            <mat-error *ngIf="productForm.controls['title'].hasError('required')">
+            <mat-error *ngIf="productForm.controls['title'].hasError('required') ||
+            productForm.controls['title'].hasError('minLength')">
               Ingresa el titulo del producto
             </mat-error>
           </mat-form-field>
@@ -29,7 +31,8 @@
       <div class="row">
         <mat-form-field class="full-width">
           <input matInput currencyMask [options]="{align: 'left'}" placeholder="Precio del producto" formControlName="price">
-          <mat-error *ngIf="productForm.controls['price'].hasError('required')">
+          <mat-error *ngIf="productForm.controls['price'].hasError('required') ||
+          productForm.controls['price'].hasError('minLength')">
             Ingresa el precio que le corresponde al producto
           </mat-error>
         </mat-form-field>
@@ -38,7 +41,8 @@
         <div class="col">
           <mat-form-field class="full-width">
             <textarea rows="5" matInput placeholder="Descripción del producto" formControlName="description"></textarea>
-            <mat-error *ngIf="productForm.controls['description'].hasError('required')">
+            <mat-error *ngIf="productForm.controls['description'].hasError('required') ||
+            productForm.controls['description'].hasError('minLength') ">
               Ingresa la descripción correspondiente al producto
             </mat-error>
           </mat-form-field>
@@ -46,7 +50,7 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">Crear prodcuto</button>
+      <button mat-raised-button color="primary" [disabled]="statusBtnSubmit" type="submit">Crear prodcuto</button>
     </mat-card-actions>
   </mat-card>
 </form>

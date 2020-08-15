@@ -5,6 +5,7 @@ import { MatTable } from '@angular/material/table';
 import { StockDataSource } from './stock-datasource';
 import { Product } from '../../../products/interfaces/product.model';
 import { ProductsService } from '../../../core/services/products/products.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-stock',
@@ -44,6 +45,118 @@ export class StockComponent implements AfterViewInit, OnInit, OnDestroy {
 
   updateTable(): void {
     this.fetchPorducts();
+  }
+
+  successDeleteMsg(): void {
+    Swal.fire({
+      title: 'El producto fue borrado con exito',
+      icon: 'success',
+      customClass: {
+        confirmButton: 'mat-focus-indicator mat-raised-button mat-button-base mat-primary'
+      },
+      buttonsStyling: false,
+      allowOutsideClick: false
+    });
+  }
+
+  errorMsg(): void {
+    Swal.fire({
+      title: '¡A ocurriedo un error!',
+      icon: 'error',
+      text: 'Por favor, vuelve a intentarlo',
+      customClass: {
+        confirmButton: 'mat-focus-indicator mat-raised-button mat-button-base mat-primary'
+      },
+      buttonsStyling: false,
+      allowOutsideClick: false
+    });
+  }
+
+  cancelMsg(): void {
+    Swal.fire({
+      title: 'Se a cancelado la acción',
+      icon: 'info',
+      text: 'No se realizo ningun cambio',
+      customClass: {
+        confirmButton: 'mat-focus-indicator mat-raised-button mat-button-base mat-primary'
+      },
+      buttonsStyling: false,
+      allowOutsideClick: false
+    });
+  }
+
+  viewProduct(id: string): void {
+    this.productsService.getProduct(id).subscribe(
+      r => {
+        Swal.fire({
+          title: `Producto: ${r.title}`,
+          imageUrl: r.image,
+          imageWidth: 300,
+          imageAlt: `img-${r.title}`,
+          html: `
+                <p><b>Id: </b>${r.id}</p>
+                <p><b>Precio: </b>${r.price}</p>
+                <p><b>descripción: </b>${r.description}</p>
+              `,
+          customClass: {
+            confirmButton: 'mat-focus-indicator mat-raised-button mat-button-base mat-primary'
+          },
+          buttonsStyling: false,
+          allowOutsideClick: false
+        });
+      },
+      error => {
+        this.errorMsg();
+      }
+    );
+  }
+
+
+  confirmDeleteProduct(id: string): void {
+    this.productsService.getProduct(id).subscribe(
+      r => {
+        Swal.fire({
+          title: '¿ Seguro que quieres borrar este producto ?',
+          icon: 'warning',
+          html: `
+                <p><b>Id: </b>${r.id}</p>
+                <p><b>Titulo: </b>${r.title}</p>
+                <p><b>descripción: </b>${r.description}</p>
+              `,
+          showCancelButton: true,
+          confirmButtonText: 'Borrar',
+          cancelButtonText: 'Cancelar',
+          customClass: {
+            confirmButton: 'mat-focus-indicator mat-raised-button mat-button-base mat-primary',
+            cancelButton: 'mat-focus-indicator mat-raised-button mat-button-base mat-warn mr-1'
+          },
+          buttonsStyling: false,
+          reverseButtons: true,
+          allowOutsideClick: false
+        }).then((rs) => {
+          if (rs.value) {
+            this.deleteProduct(id);
+          } else {
+           this.cancelMsg();
+          }
+        });
+      },
+      error => {
+        this.errorMsg();
+      }
+    );
+  }
+
+  deleteProduct(id: string): void {
+    this.productsService.deleteProduct(id).subscribe(
+      r => {
+        this.successDeleteMsg();
+        this.updateTable();
+      },
+      error => {
+        this.errorMsg();
+      }
+    );
   }
 
   ngAfterViewInit(): void {

@@ -22,7 +22,7 @@ export class ProductsService {
   }
 
   createProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>(`${environment.urlAPI}/products`, product);
+    return this.http.post<Product>(`${environment.urlAPI}products`, product);
   }
 
   updateProduct(id: string, product: Partial<Product>): Observable<Product> {

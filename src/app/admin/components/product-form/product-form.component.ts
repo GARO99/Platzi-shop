@@ -1,8 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
+import { ProductsService } from '../../../core/services/products/products.service';
 
 import Swal from 'sweetalert2';
+import { async } from 'rxjs/internal/scheduler/async';
 
 @Component({
   selector: 'app-product-form',
@@ -10,11 +12,12 @@ import Swal from 'sweetalert2';
   styleUrls: ['./product-form.component.scss']
 })
 
-export class ProductFormComponent {
+export class ProductFormComponent implements OnInit {
   @ViewChild('formDirective') private formDirective: NgForm;
   productForm: FormGroup;
+  statusBtnSubmit: boolean;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private productsService: ProductsService, private fb: FormBuilder, private router: Router) {
     this.buildForm();
   }
 
@@ -30,13 +33,13 @@ export class ProductFormComponent {
       title: [
         null,
         [
-          Validators.required
+          Validators.required,
         ]
       ],
       price: [
         null,
         [
-          Validators.required
+          Validators.required,
         ]
       ],
       image: [
@@ -45,10 +48,14 @@ export class ProductFormComponent {
       description: [
         null,
         [
-          Validators.required
+          Validators.required,
         ]
       ]
     });
+  }
+
+  ngOnInit(): void{
+    this.statusBtnSubmit = false;
   }
 
   private resetForm(): void {
@@ -56,28 +63,61 @@ export class ProductFormComponent {
     this.formDirective.resetForm();
   }
 
+  successMsg(): void {
+    Swal.fire({
+      title: 'El producto fue registrado con exito',
+      icon: 'success',
+      showCancelButton: true,
+      confirmButtonText: 'Ir al inventario',
+      cancelButtonText: 'Crear otro producto',
+      customClass: {
+        confirmButton: 'mat-focus-indicator mat-raised-button mat-button-base mat-primary mr-1',
+        cancelButton: 'mat-focus-indicator mat-raised-button mat-button-base'
+      },
+      buttonsStyling: false,
+      allowOutsideClick: false
+    }).then((r) => {
+      if (r.value) {
+        this.router.navigate(['./admin/stock']);
+      } else {
+        this.resetForm();
+      }
+    });
+  }
+
+  errorMsg(): void {
+    Swal.fire({
+      title: '¡A ocurriedo un error!',
+      icon: 'error',
+      text: 'Por favor, vuelve a intentarlo',
+      customClass: {
+        confirmButton: 'mat-focus-indicator mat-raised-button mat-button-base mat-primary mr-1',
+      },
+      buttonsStyling: false,
+      allowOutsideClick: false
+    });
+  }
+
+  onkey(e: Event): void {
+    e.preventDefault();
+    console.log(e);
+  }
+
   onSubmit(e: Event): void {
     e.preventDefault();
     if (this.productForm.valid) {
-      Swal.fire({
-        title: 'El producto fue registrado con exito',
-        icon: 'success',
-        showCancelButton: true,
-        confirmButtonText: 'Ir al inventario',
-        cancelButtonText: 'Crear otro producto',
-        customClass: {
-          confirmButton: 'mat-focus-indicator mat-raised-button mat-button-base mat-primary mr-1',
-          cancelButton: 'mat-focus-indicator mat-raised-button mat-button-base'
+      this.statusBtnSubmit = true;
+      this.productsService.createProduct(this.productForm.value).subscribe(
+        r => {
+          this.successMsg();
         },
-        buttonsStyling: false,
-        allowOutsideClick: false
-      }).then((r) => {
-        if (r.value) {
-          this.router.navigate(['./admin/stock']);
-        } else {
-          this.resetForm();
+        error => {
+          this.errorMsg();
+        },
+        () => {
+          this.statusBtnSubmit = false;
         }
-      });
+      );
     }
   }
 }
