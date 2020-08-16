@@ -1,19 +1,23 @@
-.margin-form {
-  margin: 2%;
-}
-
 .full-width {
   width: 100%;
 }
 
 .products-card {
   min-width: 120px;
-  margin: 20px auto;
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+  box-shadow: none !important;
 }
 
 .mat-radio-button {
   display: block;
   margin: 5px 0;
+}
+
+.mat-card-actions .mat-raised-button {
+  margin-left: 0;
+  margin-right: 0
 }
 
 .row {

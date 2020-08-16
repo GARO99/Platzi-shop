@@ -21,10 +21,6 @@ const routes: Routes = [
         component: DashboardComponent
       },
       {
-        path: 'create',
-        component: ProductFormComponent
-      },
-      {
         path: 'stock',
         component: StockComponent
       }

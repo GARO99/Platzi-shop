@@ -1,5 +1,8 @@
 <div class="margin-table">
-  <button class="mb-1" mat-raised-button color="primary" routerLink="/admin/create" >Crear prodcuto</button>
+  <button class="mb-1" mat-raised-button color="primary" 
+  (click)="openDialogForm(null)">
+    Crear prodcuto
+  </button>
   <div class="mat-elevation-z8">
     <table mat-table class="full-width-table aling-field-table" matSort aria-label="Elements">
       
@@ -25,7 +28,8 @@
           (click)="viewProduct(row.id)">
             <mat-icon>visibility</mat-icon>
           </button>
-          <button mat-icon-button title="Editar información del producto">
+          <button mat-icon-button title="Editar información del producto"
+          (click)="openDialogForm(row.id)">
             <mat-icon>edit</mat-icon>
           </button>
           <button mat-icon-button color="warn" title="Eliminar porducto"

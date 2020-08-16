@@ -1,12 +1,9 @@
-<form class="margin-form" [formGroup]="productForm" autocomplete="off" novalidate 
+<form [formGroup]="productForm" autocomplete="off" novalidate 
 #formDirective="ngForm" (ngSubmit)="onSubmit($event)" keyup.enter>
   <mat-card class="products-card">
-    <mat-card-header>
-      <mat-card-title>Crear nuevo producto</mat-card-title>
-    </mat-card-header>
     <mat-card-content>
       <div class="row">
-        <div class="col">
+        <div class="col" *ngIf="id === null">
           <mat-form-field class="full-width">
             <mat-label>Id</mat-label>
             <input matInput placeholder="Ex. 1" formControlName="id">
@@ -22,7 +19,7 @@
           <mat-form-field class="full-width">
             <input matInput placeholder="Titulo del producto" formControlName="title">
             <mat-error *ngIf="productForm.controls['title'].hasError('required') ||
-            productForm.controls['title'].hasError('minLength')">
+            productForm.controls['title'].hasError('noEmpty')">
               Ingresa el titulo del producto
             </mat-error>
           </mat-form-field>
@@ -32,7 +29,7 @@
         <mat-form-field class="full-width">
           <input matInput currencyMask [options]="{align: 'left'}" placeholder="Precio del producto" formControlName="price">
           <mat-error *ngIf="productForm.controls['price'].hasError('required') ||
-          productForm.controls['price'].hasError('minLength')">
+          productForm.controls['price'].hasError('validPrice')">
             Ingresa el precio que le corresponde al producto
           </mat-error>
         </mat-form-field>
@@ -42,7 +39,7 @@
           <mat-form-field class="full-width">
             <textarea rows="5" matInput placeholder="Descripción del producto" formControlName="description"></textarea>
             <mat-error *ngIf="productForm.controls['description'].hasError('required') ||
-            productForm.controls['description'].hasError('minLength') ">
+            productForm.controls['description'].hasError('noEmpty') ">
               Ingresa la descripción correspondiente al producto
             </mat-error>
           </mat-form-field>
@@ -50,7 +47,16 @@
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" [disabled]="statusBtnSubmit" type="submit">Crear prodcuto</button>
+      <div class="row between-xs middle-xs">
+        <button class="mb-1" tabindex="-1" mat-raised-button type="button"
+        (click)="closeDialog()">
+          Cerrar
+        </button>
+        
+        <button class="mb-1" mat-raised-button color="primary" [disabled]="statusBtnSubmit" type="submit">
+          Guardar
+        </button>
+      </div>
     </mat-card-actions>
   </mat-card>
 </form>

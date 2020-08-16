@@ -10,10 +10,11 @@ import { ProductFormComponent } from './components/product-form/product-form.com
 import { NavComponent } from './components/nav/nav.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { StockComponent } from './components/stock/stock.component';
+import { DialogFormComponent } from './components/dialog-form/dialog-form.component';
 
 
 @NgModule({
-  declarations: [ProductFormComponent, NavComponent, DashboardComponent, StockComponent],
+  declarations: [ProductFormComponent, NavComponent, DashboardComponent, StockComponent, DialogFormComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

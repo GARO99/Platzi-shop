@@ -1,0 +1,10 @@
+<h1 mat-dialog-title *ngIf="id === null; else idNotNull">Crear producto</h1>
+<ng-template #idNotNull>
+  <h1 mat-dialog-title >Actualizar producto</h1>
+</ng-template>
+<div mat-dialog-content>
+  <app-product-form
+   [id] = "id"
+   [dialogRef] = "dialogRef"
+  ></app-product-form>
+</div>

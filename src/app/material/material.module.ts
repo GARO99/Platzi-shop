@@ -17,6 +17,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { CustomPaginator } from './custom-files/CustomPaginatorConfiguration';
 
@@ -38,7 +39,8 @@ import { CustomPaginator } from './custom-files/CustomPaginatorConfiguration';
     MatMenuModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatDialogModule
   ],
   imports: [
     CommonModule,
@@ -56,7 +58,8 @@ import { CustomPaginator } from './custom-files/CustomPaginatorConfiguration';
     MatMenuModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatDialogModule
   ],
   providers: [
     {

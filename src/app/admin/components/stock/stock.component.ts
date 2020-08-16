@@ -2,10 +2,13 @@ import { AfterViewInit, Component, OnInit, OnDestroy, ViewChild } from '@angular
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
 import { StockDataSource } from './stock-datasource';
 import { Product } from '../../../products/interfaces/product.model';
 import { ProductsService } from '../../../core/services/products/products.service';
 import Swal from 'sweetalert2';
+
+import { DialogFormComponent } from '../dialog-form/dialog-form.component';
 
 @Component({
   selector: 'app-stock',
@@ -24,7 +27,8 @@ export class StockComponent implements AfterViewInit, OnInit, OnDestroy {
   idInterval: number;
 
  constructor(
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private dialog: MatDialog
   ){}
 
   ngOnInit(): void {
@@ -101,8 +105,7 @@ export class StockComponent implements AfterViewInit, OnInit, OnDestroy {
           customClass: {
             confirmButton: 'mat-focus-indicator mat-raised-button mat-button-base mat-primary'
           },
-          buttonsStyling: false,
-          allowOutsideClick: false
+          buttonsStyling: false
         });
       },
       error => {
@@ -111,6 +114,16 @@ export class StockComponent implements AfterViewInit, OnInit, OnDestroy {
     );
   }
 
+  openDialogForm(id: string | null): void {
+    const dialogRef = this.dialog.open(DialogFormComponent, {
+      width: '800px',
+      data: id
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.updateTable();
+    });
+  }
 
   confirmDeleteProduct(id: string): void {
     this.productsService.getProduct(id).subscribe(
