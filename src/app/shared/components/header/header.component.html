@@ -18,7 +18,7 @@
       </nav>
       
       <a mat-icon-button title="Carrito">
-        <mat-icon matBadge="2" matBadgeSize="small" matBadgeColor="warn" >shopping_cart</mat-icon>
+        <mat-icon [matBadge]="total$ | async" matBadgeSize="small" matBadgeColor="warn" >shopping_cart</mat-icon>
       </a>
     </div>
   </mat-toolbar-row>
