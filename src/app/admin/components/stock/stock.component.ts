@@ -120,8 +120,10 @@ export class StockComponent implements AfterViewInit, OnInit, OnDestroy {
       data: id
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      this.updateTable();
+    dialogRef.afterClosed().subscribe(r => {
+      if (r) {
+        this.updateTable();
+      }
     });
   }
 

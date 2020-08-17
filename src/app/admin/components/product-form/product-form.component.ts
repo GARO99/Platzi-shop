@@ -80,8 +80,8 @@ export class ProductFormComponent implements OnInit {
     );
   }
 
-  closeDialog(): void {
-    this.dialogRef.close();
+  closeDialog(updateTable: boolean): void {
+    this.dialogRef.close(updateTable);
   }
 
   private resetForm(): void {
@@ -104,7 +104,7 @@ export class ProductFormComponent implements OnInit {
       allowOutsideClick: false
     }).then((r) => {
       if (r.value) {
-        this.closeDialog();
+        this.closeDialog(true);
       } else {
         this.resetForm();
       }
