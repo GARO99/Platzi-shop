@@ -9,7 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   exports: [
     HeaderComponent,

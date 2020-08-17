@@ -15,7 +15,14 @@ export class CartService {
   constructor() { }
 
   addCart(product: Product): void {
-    this.products = [...this.products, product];
+    if (this.products.length > 0){
+      if (!this.products.some(({id}) => id === product.id)) {
+        this.products = [...this.products, product];
+      }
+    }else {
+      this.products = [...this.products, product];
+    }
+
     this.cart.next(this.products);
   }
 }

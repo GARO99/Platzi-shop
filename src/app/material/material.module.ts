@@ -18,6 +18,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatStepperModule} from '@angular/material/stepper';
 
 import { CustomPaginator } from './custom-files/CustomPaginatorConfiguration';
 
@@ -40,7 +41,8 @@ import { CustomPaginator } from './custom-files/CustomPaginatorConfiguration';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatDialogModule
+    MatDialogModule,
+    MatStepperModule
   ],
   imports: [
     CommonModule,
@@ -59,7 +61,8 @@ import { CustomPaginator } from './custom-files/CustomPaginatorConfiguration';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatDialogModule
+    MatDialogModule,
+    MatStepperModule
   ],
   providers: [
     {
