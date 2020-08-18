@@ -1,0 +1,47 @@
+.sing-form {
+  padding: 2em;
+}
+
+.input-width {
+  width: 80%;
+}
+
+.sign-card {
+  margin: 30px auto;
+  max-width: 500px;
+  min-width: 120px;
+  padding-top: 2em;
+  text-align: center;
+  mat-card-content {
+    margin-bottom: 5px;
+  }
+}
+
+.title-form {
+  display: block;
+  mat-card-title {
+    font-size: 25px;
+    margin-bottom: 1em;
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.col:last-child {
+  margin-right: 0;
+}
+
+.btn-sign-in {
+  width: 80%;
+  height: 40px;
+  font-size: 20px;
+  font-weight: 400;
+}

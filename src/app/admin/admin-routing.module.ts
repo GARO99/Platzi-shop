@@ -25,6 +25,10 @@ const routes: Routes = [
         component: StockComponent
       }
     ]
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   }
 ];
 
