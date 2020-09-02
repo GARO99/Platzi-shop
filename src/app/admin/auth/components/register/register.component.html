@@ -1,1 +1,68 @@
-<p>register works!</p>
+<form class="singUp-form" [formGroup]="signUpForm" autocomplete="off" novalidate
+#formDirective="ngForm" (ngSubmit)="onSubmit($event)">
+  <mat-card class="mat-elevation-z8 singUp-card">
+    <mat-card-header class="title-form">
+      <mat-card-title>Registrarse</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field appearance="outline" class="input-width">
+            <mat-label>Nombre completo</mat-label>
+            <input matInput formControlName="fullName" type="text">
+            <mat-error *ngIf="signUpForm.controls['fullName'].hasError('required')">
+              Ingrese su nombre completo
+            </mat-error>
+            <mat-error *ngIf="signUpForm.controls['fullName'].hasError('noEmpty')">
+              El campo no puede estar vacio
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field appearance="outline" class="input-width">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="example@email.com" formControlName="email" type="text">
+            <mat-error *ngIf="signUpForm.controls['email'].hasError('required')">
+              Ingrese su dirección de correo electrónico
+            </mat-error>
+            <mat-error *ngIf="signUpForm.controls['email'].hasError('email')">
+              El correo electrónico que ingreso es invalido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field appearance="outline" class="input-width">
+            <mat-label>Contraseña</mat-label>
+            <input matInput formControlName="password" autocomplete="off" type="password">
+            <mat-error *ngIf="signUpForm.controls['password'].hasError('required')">
+              Ingrese su contraseña
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field appearance="outline" class="input-width">
+            <mat-label>Confirmar contraseña</mat-label>
+            <input matInput formControlName="confirmPassword" autocomplete="off" [errorStateMatcher]="matcher" type="password">
+            <mat-error *ngIf="signUpForm.controls['confirmPassword'].hasError('required')">
+              Ingrese de nuevo su contraseña
+            </mat-error>
+            <mat-error *ngIf="signUpForm.hasError('passwordsNotSame')">
+              Las contraseñas no coinciden
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button class="mb-1 btn-sign-in" mat-raised-button color="primary" type="submit">
+        Registrarse
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>
