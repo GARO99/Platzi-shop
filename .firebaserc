@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "platzi-shop-b180f": {
+      "hosting": {
+        "Platzi-shop": [
+          "platzi-shop-b180f"
+        ]
+      }
+    }
+  }
+}

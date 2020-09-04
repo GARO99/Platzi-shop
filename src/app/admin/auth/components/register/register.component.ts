@@ -3,6 +3,10 @@ import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from 'src/app/util/custom-validators';
 import { CustomErrorStateMatcher } from 'src/app/util/custom-errorStateMatcher';
 
+import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -14,7 +18,9 @@ export class RegisterComponent implements OnInit {
   matcher = new CustomErrorStateMatcher();
 
   constructor(
-    private fb: FormBuilder
+    private route: Router,
+    private fb: FormBuilder,
+    private authService: AuthService
   ) {
     this.FormBuild();
    }
@@ -30,8 +36,27 @@ export class RegisterComponent implements OnInit {
       confirmPassword: [null, [Validators.required]]
     }, {validators: CustomValidators.PasswordsNotSame});
   }
-
+  errorMsg(message: string): void {
+    Swal.fire({
+      title: '¡A ocurriedo un error!',
+      icon: 'error',
+      text: message,
+      customClass: {
+        confirmButton: 'mat-focus-indicator mat-raised-button mat-button-base mat-primary mr-1',
+      },
+      buttonsStyling: false,
+      allowOutsideClick: false
+    });
+  }
   onSubmit(e: Event): void{
     e.preventDefault();
+    if (this.signUpForm.valid){
+      this.authService.createUser(this.signUpForm.value.email, this.signUpForm.value.password).then(r => {
+        this.route.navigate(['/admin/auth']);
+      }).catch(e => {
+        console.log(e);
+        this.errorMsg(e.message);
+      });
+    }
   }
 }
