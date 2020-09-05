@@ -27,8 +27,8 @@
             <mat-error *ngIf="signUpForm.controls['email'].hasError('required')">
               Ingrese su dirección de correo electrónico
             </mat-error>
-            <mat-error *ngIf="signUpForm.controls['email'].hasError('email')">
-              El correo electrónico que ingreso es invalido
+            <mat-error *ngIf="signUpForm.controls['email'].hasError('pattern')">
+              El correo electrónico que ingreso no es invalido
             </mat-error>
           </mat-form-field>
         </div>
@@ -40,6 +40,9 @@
             <input matInput formControlName="password" autocomplete="off" type="password">
             <mat-error *ngIf="signUpForm.controls['password'].hasError('required')">
               Ingrese su contraseña
+            </mat-error>
+            <mat-error *ngIf="signUpForm.controls['password'].hasError('pattern')">
+              La contraseña no puede tener menos de 6 caracteres
             </mat-error>
           </mat-form-field>
         </div>
@@ -63,6 +66,7 @@
       <button class="mb-1 btn-sign-in" mat-raised-button color="primary" type="submit">
         Registrarse
       </button>
+      <a mat-button routerLink="/admin/auth/sing_in">Iniciar Sesión</a>
     </mat-card-actions>
   </mat-card>
 </form>

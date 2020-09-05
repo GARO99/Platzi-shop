@@ -19,8 +19,8 @@ export class SignInComponent implements OnInit {
 
   private FormBuild(): void {
     this.signInForm = this.fb.group({
-      email: [null, [Validators.required, Validators.email]],
-      password: [null, [Validators.required]]
+      email: [null, [Validators.required, Validators.pattern(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/)]],
+      password: [null, [Validators.required, Validators.pattern(/^.{6,}$/)]]
     });
   }
 

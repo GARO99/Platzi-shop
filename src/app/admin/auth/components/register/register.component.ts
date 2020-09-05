@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from 'src/app/util/custom-validators';
 import { CustomErrorStateMatcher } from 'src/app/util/custom-errorStateMatcher';
+import { ControlFirebaseError } from 'src/app/util/control-firebaseError';
 
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { Router } from '@angular/router';
@@ -16,6 +17,7 @@ export class RegisterComponent implements OnInit {
   @ViewChild('formDirective') private formDirective: NgForm;
   signUpForm: FormGroup;
   matcher = new CustomErrorStateMatcher();
+  controlFirebaseError = new ControlFirebaseError();
 
   constructor(
     private route: Router,
@@ -31,8 +33,8 @@ export class RegisterComponent implements OnInit {
   private FormBuild(): void{
     this.signUpForm = this.fb.group({
       fullName: [null, [Validators.required, CustomValidators.noEmpty]],
-      email: [null, [Validators.required, Validators.email]],
-      password: [null, [Validators.required]],
+      email: [null, [Validators.required, Validators.pattern(/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/)]],
+      password: [null, [Validators.required, Validators.pattern(/^.{6,}$/)]],
       confirmPassword: [null, [Validators.required]]
     }, {validators: CustomValidators.PasswordsNotSame});
   }
@@ -53,9 +55,9 @@ export class RegisterComponent implements OnInit {
     if (this.signUpForm.valid){
       this.authService.createUser(this.signUpForm.value.email, this.signUpForm.value.password).then(r => {
         this.route.navigate(['/admin/auth']);
-      }).catch(e => {
-        console.log(e);
-        this.errorMsg(e.message);
+      }).catch(err => {
+        console.log(err);
+        this.errorMsg(this.controlFirebaseError.getErrorMessage(err.code));
       });
     }
   }
