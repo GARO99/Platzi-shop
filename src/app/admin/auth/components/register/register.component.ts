@@ -38,6 +38,7 @@ export class RegisterComponent implements OnInit {
       confirmPassword: [null, [Validators.required]]
     }, {validators: CustomValidators.PasswordsNotSame});
   }
+
   errorMsg(message: string): void {
     Swal.fire({
       title: '¡A ocurriedo un error!',
@@ -50,13 +51,13 @@ export class RegisterComponent implements OnInit {
       allowOutsideClick: false
     });
   }
+
   onSubmit(e: Event): void{
     e.preventDefault();
     if (this.signUpForm.valid){
       this.authService.createUser(this.signUpForm.value.email, this.signUpForm.value.password).then(r => {
         this.route.navigate(['/admin/auth']);
       }).catch(err => {
-        console.log(err);
         this.errorMsg(this.controlFirebaseError.getErrorMessage(err.code));
       });
     }

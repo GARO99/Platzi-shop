@@ -1,4 +1,4 @@
 export interface FirebaseError {
-  Code: string;
+  code: string;
   message: string;
 }

@@ -13,4 +13,8 @@ export class AuthService {
   createUser(email: string, passwaord: string): Promise<firebase.auth.UserCredential> {
     return this.angularFireAuth.createUserWithEmailAndPassword(email, passwaord);
   }
+
+  sing_in(email: string, passwaord: string): Promise<firebase.auth.UserCredential> {
+    return this.angularFireAuth.signInWithEmailAndPassword(email, passwaord);
+  }
 }
