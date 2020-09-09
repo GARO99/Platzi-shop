@@ -5,10 +5,12 @@ import { ProductFormComponent } from './components/product-form/product-form.com
 import { NavComponent } from './components/nav/nav.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { StockComponent } from './components/stock/stock.component';
+import { AdminGuard } from '../guard/admin.guard';
 
 const routes: Routes = [
   {
     path: '',
+    canActivate: [AdminGuard],
     component: NavComponent,
     children: [
       {

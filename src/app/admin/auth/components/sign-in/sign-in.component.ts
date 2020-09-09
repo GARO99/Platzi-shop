@@ -50,7 +50,7 @@ export class SignInComponent implements OnInit {
   onSubmit(e: Event): void {
     e.preventDefault();
     if (this.signInForm.valid) {
-      this.authService.sing_in(this.signInForm.value.email, this.signInForm.value.password).then( r => {
+      this.authService.singIn(this.signInForm.value.email, this.signInForm.value.password).then( r => {
         this.route.navigate(['/admin']);
       }).catch( err => {
         console.log(err);
