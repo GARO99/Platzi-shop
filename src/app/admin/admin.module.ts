@@ -12,6 +12,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { StockComponent } from './components/stock/stock.component';
 import { DialogFormComponent } from './components/dialog-form/dialog-form.component';
 
+import { CurrencyPipe } from '@angular/common';
 
 @NgModule({
   declarations: [ProductFormComponent, NavComponent, DashboardComponent, StockComponent, DialogFormComponent],
@@ -23,5 +24,6 @@ import { DialogFormComponent } from './components/dialog-form/dialog-form.compon
     NgxCurrencyModule,
     SweetAlert2Module
   ],
+  providers: [CurrencyPipe]
 })
 export class AdminModule { }

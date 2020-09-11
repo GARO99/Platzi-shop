@@ -26,13 +26,21 @@
         </div>
       </div>
       <div class="row">
-        <mat-form-field class="full-width">
-          <input matInput currencyMask [options]="{align: 'left'}" placeholder="Precio del producto" formControlName="price">
-          <mat-error *ngIf="productForm.controls['price'].hasError('required') ||
-          productForm.controls['price'].hasError('validPrice')">
-            Ingresa el precio que le corresponde al producto
-          </mat-error>
-        </mat-form-field>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput currencyMask [options]="{align: 'left'}" placeholder="Precio del producto" formControlName="price">
+            <mat-error *ngIf="productForm.controls['price'].hasError('required') ||
+            productForm.controls['price'].hasError('validPrice')">
+              Ingresa el precio que le corresponde al producto
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <img *ngIf="!loadImage && imgUrl$ | async as imgUrl" [src]="imgUrl" alt="img-product" width="300">
+          <img *ngIf="productForm.value.image && !loadImage && !(imgUrl$ | async)" [src]="productForm.value.image" alt="img-product" width="300">
+          <img *ngIf="loadImage" src="../../../../assets/images/loadImages.gif" alt="img-loadImage">
+          <input type="file" (change)="uploadImg($event)">
+        </div>
       </div>
       <div class="row">
         <div class="col">

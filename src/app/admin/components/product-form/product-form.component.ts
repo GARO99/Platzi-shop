@@ -1,8 +1,11 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
+import { AngularFireStorage, AngularFireStorageReference } from '@angular/fire/storage';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ProductsService } from '../../../core/services/products/products.service';
 import Swal from 'sweetalert2';
+import { Observable } from 'rxjs';
+import { finalize, map, catchError } from 'rxjs/operators';
 
 import { DialogFormComponent } from '../dialog-form/dialog-form.component';
 import { CustomValidators } from '../../../util/custom-validators';
@@ -21,10 +24,13 @@ export class ProductFormComponent implements OnInit {
 
   productForm: FormGroup;
   statusBtnSubmit: boolean;
+  loadImage: boolean;
+  imgUrl$: Observable<any>;
 
   constructor(
     private productsService: ProductsService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private angularFireStorage: AngularFireStorage
   ) {
     this.buildForm();
   }
@@ -67,6 +73,7 @@ export class ProductFormComponent implements OnInit {
 
   ngOnInit(): void{
     this.statusBtnSubmit = false;
+    this.loadImage = false;
     if (this.id !== null) {
       this.bringDataToEdit();
     }
@@ -129,7 +136,7 @@ export class ProductFormComponent implements OnInit {
       r => {
         this.successMsg();
       },
-      error => {
+      err => {
         this.errorMsg();
       },
       () => {
@@ -143,13 +150,47 @@ export class ProductFormComponent implements OnInit {
       r => {
         this.successMsg();
       },
-      error => {
+      err => {
         this.errorMsg();
       },
       () => {
         this.statusBtnSubmit = false;
       }
     );
+  }
+
+  async uploadImg(e: Event): Promise<void> {
+    this.statusBtnSubmit = true;
+    this.loadImage = true;
+    const file = (e.target as HTMLInputElement).files[0];
+    const imgLaction = `products/${file.name}`;
+    const fileRef =  this.angularFireStorage.ref(imgLaction);
+    if (await this.imgExist(fileRef).toPromise()){
+      this.loadImg(fileRef);
+    }else {
+      const task = this.angularFireStorage.upload(imgLaction, file);
+      task.snapshotChanges().pipe(
+       finalize(() => {
+        this.loadImg(fileRef);
+        })
+      ).subscribe();
+    }
+  }
+
+  imgExist(fileRef: AngularFireStorageReference): Observable<boolean> {
+    return fileRef.getDownloadURL().pipe(
+      map(() => true),
+      catchError(async () => false)
+    );
+  }
+
+  loadImg(fileRef: AngularFireStorageReference): void{
+    this.imgUrl$ = fileRef.getDownloadURL();
+    this.imgUrl$.subscribe(url => {
+      this.productForm.get('image').setValue(url);
+      this.statusBtnSubmit = false;
+      this.loadImage = false;
+    });
   }
 
   onSubmit(e: Event): void {

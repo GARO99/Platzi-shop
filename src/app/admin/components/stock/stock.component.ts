@@ -9,6 +9,7 @@ import { ProductsService } from '../../../core/services/products/products.servic
 import Swal from 'sweetalert2';
 
 import { DialogFormComponent } from '../dialog-form/dialog-form.component';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-stock',
@@ -28,7 +29,8 @@ export class StockComponent implements AfterViewInit, OnInit, OnDestroy {
 
  constructor(
     private productsService: ProductsService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private currencyPipe: CurrencyPipe
   ){}
 
   ngOnInit(): void {
@@ -99,7 +101,7 @@ export class StockComponent implements AfterViewInit, OnInit, OnDestroy {
           imageAlt: `img-${r.title}`,
           html: `
                 <p><b>Id: </b>${r.id}</p>
-                <p><b>Precio: </b>${r.price}</p>
+                <p><b>Precio: </b>${this.currencyPipe.transform(r.price)}</p>
                 <p><b>descripción: </b>${r.description}</p>
               `,
           customClass: {
