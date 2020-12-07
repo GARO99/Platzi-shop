@@ -5,7 +5,7 @@ import { MatTable } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { StockDataSource } from './stock-datasource';
 import { Product } from '../../../products/interfaces/product.model';
-import { ProductsService } from '../../../core/services/products/products.service';
+import { ProductsService } from '@core/services/products/products.service';
 import Swal from 'sweetalert2';
 
 import { DialogFormComponent } from '../dialog-form/dialog-form.component';

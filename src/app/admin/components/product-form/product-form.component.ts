@@ -2,13 +2,13 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { AngularFireStorage, AngularFireStorageReference } from '@angular/fire/storage';
 import { MatDialogRef } from '@angular/material/dialog';
-import { ProductsService } from '../../../core/services/products/products.service';
+import { ProductsService } from '@core/services/products/products.service';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
 import { finalize, map, catchError } from 'rxjs/operators';
 
 import { DialogFormComponent } from '../dialog-form/dialog-form.component';
-import { CustomValidators } from '../../../util/custom-validators';
+import { CustomValidators } from '@util/custom-validators';
 
 @Component({
   selector: 'app-product-form',

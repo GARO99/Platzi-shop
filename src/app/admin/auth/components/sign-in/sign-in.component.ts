@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ControlFirebaseError } from 'src/app/util/control-firebaseError';
+import { ControlFirebaseError } from '@util/control-firebaseError';
 
-import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { AuthService } from '@core/services/auth/auth.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
