@@ -59,4 +59,10 @@ export class SignInComponent implements OnInit {
     }
   }
 
+  singInRestApi(): void {
+    this.authService.singInRestApi('nicolas@nicolas.com', '123456').subscribe( data => {
+      console.log(data);
+    });
+  }
+
 }
